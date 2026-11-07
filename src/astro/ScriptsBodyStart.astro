@@ -1,0 +1,19 @@
+---
+/**
+ * This plugin's body-start code: the entry's body classes, global body-start
+ * code, then body-start records. Place it first inside `<body>`.
+ *
+ * Only for themes that don't render EmDash's `<EmDashBodyStart page={page} />`.
+ */
+import type { PublicPageContext } from "emdash";
+
+import { scriptsFor } from "./collect.js";
+
+interface Props {
+	page: PublicPageContext;
+}
+
+const html = await scriptsFor(Astro.locals, Astro.props.page, "body:start");
+---
+
+<Fragment set:html={html} />

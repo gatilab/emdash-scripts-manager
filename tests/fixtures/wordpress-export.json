@@ -1,0 +1,61 @@
+{
+  "format": "md-scripts-manager-export",
+  "version": 1,
+  "site": "https://example.test/",
+  "exported_at": "2026-11-07T01:44:42+00:00",
+  "global": {
+    "header_scripts": "<meta name=\"v\" content=\"1\">",
+    "footer_scripts": ""
+  },
+  "posts": [
+    {
+      "id": 42,
+      "post_type": "post",
+      "slug": "hello-world",
+      "status": "publish",
+      "title": "Hello",
+      "path": "/hello-world/",
+      "scripts": {
+        "header_scripts": "<style>.hero{color:red}</style>",
+        "footer_scripts": "<script>hello(\"a&b\")</script>",
+        "body_class": "landing",
+        "scripts_manager": [
+          "contact-form"
+        ]
+      }
+    }
+  ],
+  "terms": [
+    {
+      "id": 3,
+      "taxonomy": "category",
+      "slug": "news",
+      "path": "/category/news/",
+      "scripts": {
+        "header_scripts": "<script>news()</script>",
+        "footer_scripts": "",
+        "body_class": "",
+        "scripts_manager": []
+      }
+    }
+  ],
+  "registry": {
+    "items": {
+      "script-a": {
+        "id": "script-a",
+        "name": "Plausible",
+        "enabled": true,
+        "type": "external_js",
+        "url": "https://plausible.io/js/script.js",
+        "location": "head",
+        "priority": 10,
+        "strategy": "defer",
+        "consent": "essential"
+      }
+    },
+    "settings": []
+  },
+  "integrations": [
+    "google_analytics"
+  ]
+}

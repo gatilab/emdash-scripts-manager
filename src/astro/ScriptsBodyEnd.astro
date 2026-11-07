@@ -1,0 +1,19 @@
+---
+/**
+ * This plugin's footer code: global footer, footer records, then the entry's
+ * footer HTML and JavaScript. Place it last before `</body>`.
+ *
+ * Only for themes that don't render EmDash's `<EmDashBodyEnd page={page} />`.
+ */
+import type { PublicPageContext } from "emdash";
+
+import { scriptsFor } from "./collect.js";
+
+interface Props {
+	page: PublicPageContext;
+}
+
+const html = await scriptsFor(Astro.locals, Astro.props.page, "body:end");
+---
+
+<Fragment set:html={html} />

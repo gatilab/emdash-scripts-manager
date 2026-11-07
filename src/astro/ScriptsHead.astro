@@ -1,0 +1,26 @@
+---
+/**
+ * This plugin's head code: global head, head records, then the entry's head
+ * HTML, CSS and (when placed in the head) JavaScript.
+ *
+ * Only for themes that don't render EmDash's `<EmDashHead page={page} />`,
+ * which already prints the same code. Use one or the other.
+ *
+ * ```astro
+ * <head>
+ *   <ScriptsHead page={page} />
+ * </head>
+ * ```
+ */
+import type { PublicPageContext } from "emdash";
+
+import { scriptsFor } from "./collect.js";
+
+interface Props {
+	page: PublicPageContext;
+}
+
+const html = await scriptsFor(Astro.locals, Astro.props.page, "head");
+---
+
+<Fragment set:html={html} />

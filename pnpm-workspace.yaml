@@ -1,0 +1,19 @@
+# Build scripts: allow only what tooling needs (strictDepBuilds).
+allowBuilds:
+  esbuild: true
+  workerd: true
+  sharp: false
+
+# Supply-chain hardening: cooldown on brand-new releases (EmDash exempt)
+# and no non-registry transitive sources.
+minimumReleaseAge: 1440
+minimumReleaseAgeExclude:
+  - emdash
+  - "@emdash-cms/*"
+blockExoticSubdeps: true
+
+# @napi-rs/wasm-runtime accepts ^2.0.0-alpha peers and would pick the
+# @emnapi 2.0 beta, which breaks `astro check`. Stay on the 1.x line.
+overrides:
+  "@emnapi/runtime": "^1.11.3"
+  "@emnapi/core": "^1.11.3"
